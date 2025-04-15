@@ -13,6 +13,30 @@ def mostrar_productos():
 def menu_principal():
     print("[1] Agregar, [2] Eliminar, [3] Actualizar, [4] Salir")
     return input("Elija opción: ")
+def eliminar_producto():
+    print("\n--- Eliminar producto ---")
+    
+    if not Productos:
+        print("No hay productos en el inventario para eliminar.")
+        return
+    
+    while True:
+        try:
+            codigo = int(input("Ingrese el código del producto a eliminar: "))
+            if codigo not in Productos:
+                print("El código ingresado no existe. Intente nuevamente.")
+                continue
+            break
+        except ValueError:
+            print("Por favor, ingrese un valor numérico para el código.")
+    
+    print(f"Producto a eliminar: {codigo} - {Productos[codigo]} - Precio: {Precios[codigo]} - Stock: {Stock[codigo]}")
+
+    nombre = Productos[codigo]
+    del Productos[codigo]
+    del Precios[codigo]
+    del Stock[codigo]
+    print(f"Producto '{nombre}' eliminado con éxito.\n")
 
 def main():
     while True:
@@ -25,7 +49,7 @@ def main():
         elif opcion == "1":
             print("Funcionalidad de agregar en desarrollo...")
         elif opcion == "2":
-            print("Funcionalidad de eliminar en desarrollo...")
+            eliminar_producto()
         elif opcion == "3":
             print("Funcionalidad de actualizar en desarrollo...")
         else:
@@ -33,3 +57,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
