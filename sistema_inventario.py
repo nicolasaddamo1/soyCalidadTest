@@ -96,6 +96,39 @@ def actualizar_producto():
     
     print(f"Producto con código {codigo} actualizado con éxito.\n")
 
+def agregar_producto():
+    print("\n--- Agregar nuevo producto ---")
+    
+    nuevo_codigo = max(Productos.keys()) + 1
+    
+    nombre = input("Nombre del producto: ")
+    
+    while True:
+        try:
+            precio = float(input("Precio del producto: "))
+            if precio <= 0:
+                print("El precio debe ser mayor que cero. Intente nuevamente.")
+                continue
+            break
+        except ValueError:
+            print("Por favor, ingrese un valor numérico para el precio.")
+    
+    while True:
+        try:
+            cantidad = int(input("Cantidad en stock: "))
+            if cantidad < 0:
+                print("El stock no puede ser negativo. Intente nuevamente.")
+                continue
+            break
+        except ValueError:
+            print("Por favor, ingrese un valor entero para el stock.")
+    
+    Productos[nuevo_codigo] = nombre
+    Precios[nuevo_codigo] = precio
+    Stock[nuevo_codigo] = cantidad
+    
+    print(f"Producto '{nombre}' agregado con éxito con código {nuevo_codigo}.\n")
+
 def main():
     while True:
         mostrar_productos()
@@ -105,7 +138,7 @@ def main():
             print("Gracias por usar el programa. ¡Hasta pronto!")
             break
         elif opcion == "1":
-            print("Funcionalidad de agregar en desarrollo...")
+            agregar_producto()
         elif opcion == "2":
             eliminar_producto()
         elif opcion == "3":
