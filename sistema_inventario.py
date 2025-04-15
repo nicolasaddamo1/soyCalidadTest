@@ -41,6 +41,61 @@ def eliminar_producto():
     else:
         print("Operación cancelada.\n")
 
+def actualizar_producto():
+    print("\n--- Actualizar producto ---")
+    
+    if not Productos:
+        print("No hay productos en el inventario para actualizar.")
+        return
+    
+    while True:
+        try:
+            codigo = int(input("Ingrese el código del producto a actualizar: "))
+            if codigo not in Productos:
+                print("El código ingresado no existe. Intente nuevamente.")
+                continue
+            break
+        except ValueError:
+            print("Por favor, ingrese un valor numérico para el código.")
+    
+    print(f"Información actual: {codigo} - {Productos[codigo]} - Precio: {Precios[codigo]} - Stock: {Stock[codigo]}")
+    
+    print("Ingrese los nuevos datos (deje en blanco para mantener el valor actual):")
+    
+    nuevo_nombre = input(f"Nombre [{Productos[codigo]}]: ")
+    if nuevo_nombre:
+        Productos[codigo] = nuevo_nombre
+    
+    while True:
+        nuevo_precio = input(f"Precio [{Precios[codigo]}]: ")
+        if not nuevo_precio:
+            break
+        try:
+            precio_float = float(nuevo_precio)
+            if precio_float <= 0:
+                print("El precio debe ser mayor que cero. Intente nuevamente.")
+                continue
+            Precios[codigo] = precio_float
+            break
+        except ValueError:
+            print("Por favor, ingrese un valor numérico para el precio.")
+    
+    while True:
+        nuevo_stock = input(f"Stock [{Stock[codigo]}]: ")
+        if not nuevo_stock:
+            break
+        try:
+            stock_int = int(nuevo_stock)
+            if stock_int < 0:
+                print("El stock no puede ser negativo. Intente nuevamente.")
+                continue
+            Stock[codigo] = stock_int
+            break
+        except ValueError:
+            print("Por favor, ingrese un valor entero para el stock.")
+    
+    print(f"Producto con código {codigo} actualizado con éxito.\n")
+
 def main():
     while True:
         mostrar_productos()
@@ -54,7 +109,7 @@ def main():
         elif opcion == "2":
             eliminar_producto()
         elif opcion == "3":
-            print("Funcionalidad de actualizar en desarrollo...")
+            actualizar_producto()
         else:
             print("Opción no válida. Intente nuevamente.")
 
