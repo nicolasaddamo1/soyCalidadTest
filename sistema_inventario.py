@@ -31,12 +31,15 @@ def eliminar_producto():
             print("Por favor, ingrese un valor numérico para el código.")
     
     print(f"Producto a eliminar: {codigo} - {Productos[codigo]} - Precio: {Precios[codigo]} - Stock: {Stock[codigo]}")
-
-    nombre = Productos[codigo]
-    del Productos[codigo]
-    del Precios[codigo]
-    del Stock[codigo]
-    print(f"Producto '{nombre}' eliminado con éxito.\n")
+    confirmacion = input("¿Está seguro de eliminar este producto? (s/n): ").lower()
+    if confirmacion == 's':
+        nombre = Productos[codigo]
+        del Productos[codigo]
+        del Precios[codigo]
+        del Stock[codigo]
+        print(f"Producto '{nombre}' eliminado con éxito.\n")
+    else:
+        print("Operación cancelada.\n")
 
 def main():
     while True:
