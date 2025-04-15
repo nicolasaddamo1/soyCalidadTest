@@ -14,4 +14,22 @@ def menu_principal():
     print("[1] Agregar, [2] Eliminar, [3] Actualizar, [4] Salir")
     return input("Elija opción: ")
 
-menu_principal()
+def main():
+    while True:
+        mostrar_productos()
+        opcion = menu_principal()
+        
+        if opcion == "4":
+            print("Gracias por usar el programa. ¡Hasta pronto!")
+            break
+        elif opcion == "1":
+            print("Funcionalidad de agregar en desarrollo...")
+        elif opcion == "2":
+            print("Funcionalidad de eliminar en desarrollo...")
+        elif opcion == "3":
+            print("Funcionalidad de actualizar en desarrollo...")
+        else:
+            print("Opción no válida. Intente nuevamente.")
+
+if __name__ == "__main__":
+    main()
