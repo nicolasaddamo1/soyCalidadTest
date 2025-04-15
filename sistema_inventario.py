@@ -28,7 +28,7 @@ def eliminar_producto():
                 continue
             break
         except ValueError:
-            print("Por favor, ingrese un valor numérico para el código.")
+            print("Ingrese un valor numérico para el código.")
     
     print(f"Producto a eliminar: {codigo} - {Productos[codigo]} - Precio: {Precios[codigo]} - Stock: {Stock[codigo]}")
     confirmacion = input("¿Está seguro de eliminar este producto? (s/n): ").lower()
@@ -56,11 +56,11 @@ def actualizar_producto():
                 continue
             break
         except ValueError:
-            print("Por favor, ingrese un valor numérico para el código.")
+            print("Ingrese un valor numérico para el código.")
     
     print(f"Información actual: {codigo} - {Productos[codigo]} - Precio: {Precios[codigo]} - Stock: {Stock[codigo]}")
     
-    print("Ingrese los nuevos datos (deje en blanco para mantener el valor actual):")
+    print("Ingrese los nuevos datos:")
     
     nuevo_nombre = input(f"Nombre [{Productos[codigo]}]: ")
     if nuevo_nombre:
@@ -73,12 +73,12 @@ def actualizar_producto():
         try:
             precio_float = float(nuevo_precio)
             if precio_float <= 0:
-                print("El precio debe ser mayor que cero. Intente nuevamente.")
+                print("El precio debe ser mayor que cero.")
                 continue
             Precios[codigo] = precio_float
             break
         except ValueError:
-            print("Por favor, ingrese un valor numérico para el precio.")
+            print("Ingrese un valor numérico para el precio.")
     
     while True:
         nuevo_stock = input(f"Stock [{Stock[codigo]}]: ")
@@ -92,7 +92,7 @@ def actualizar_producto():
             Stock[codigo] = stock_int
             break
         except ValueError:
-            print("Por favor, ingrese un valor entero para el stock.")
+            print("Ingrese un valor entero para el stock.")
     
     print(f"Producto con código {codigo} actualizado con éxito.\n")
 
@@ -111,7 +111,7 @@ def agregar_producto():
                 continue
             break
         except ValueError:
-            print("Por favor, ingrese un valor numérico para el precio.")
+            print("Ingrese un valor numérico para el precio.")
     
     while True:
         try:
@@ -121,7 +121,7 @@ def agregar_producto():
                 continue
             break
         except ValueError:
-            print("Por favor, ingrese un valor entero para el stock.")
+            print("PIngrese un valor entero para el stock.")
     
     Productos[nuevo_codigo] = nombre
     Precios[nuevo_codigo] = precio
@@ -135,7 +135,7 @@ def main():
         opcion = menu_principal()
         
         if opcion == "4":
-            print("Gracias por usar el programa. ¡Hasta pronto!")
+            print("Se ha cerrado el programa.")
             break
         elif opcion == "1":
             agregar_producto()
