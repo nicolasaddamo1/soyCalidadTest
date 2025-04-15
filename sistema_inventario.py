@@ -10,4 +10,8 @@ def mostrar_productos():
         print(f"{codigo} {Productos[codigo]} {Precios[codigo]} {Stock[codigo]}")
     print("=" * 20)
 
-mostrar_productos()
+def menu_principal():
+    print("[1] Agregar, [2] Eliminar, [3] Actualizar, [4] Salir")
+    return input("Elija opción: ")
+
+menu_principal()
